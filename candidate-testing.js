@@ -15,12 +15,15 @@ let candidateAnswers;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-
+  candidateName = input.question("What is your name? ");
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-
+  question = "Who was the first American woman in space? ";
+  correctAnswer = "Sally Ride";
+  candidateAnswer = "";
+  candidateAnswer = input.question(question);
 
 }
 
