@@ -29,10 +29,10 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  let grade = 0;
   if (candidateAnswer == correctAnswer) {
-    grade = 20
+    correctAnswers +=1;
   }
+  let grade = correctAnswers / questions * 100;
   return grade;
 }
 
