@@ -24,17 +24,15 @@ function askQuestion() {
   correctAnswer = "Sally Ride";
   candidateAnswer = "";
   candidateAnswer = input.question(question);
-
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-
-  let grade;
-  
-
+  let grade = 0;
+  if (candidateAnswer == correctAnswer) {
+    grade = 20
+  }
   return grade;
 }
 
