@@ -57,18 +57,19 @@ function gradeQuiz(candidateAnswers) {
   }
 
   let grade = correct / questions.length*100;
-  console.log(`You got ${correct} out of ${questions.length} correct. That's ${grade}% correct!`)
+  console.log(`You got ${correct} out of ${questions.length} correct. That's ${grade}% correct!`);
   if (grade >= 80) {
-    console.log(`${grade}% is a passing grade! Congratulations!`)
+    console.log(`${grade}% is a passing grade! Congratulations!`);
   } else {
-    console.log(`${grade}% is not a passing grade! Sorry!`)
+    console.log(`${grade}% is not a passing grade! Sorry!`);
   }
+  return grade;
 }
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  console.log(`Hello, ${candidateName}!`)
+  console.log(`Hello, ${candidateName}!`);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
