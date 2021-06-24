@@ -3,11 +3,11 @@ const input = require('readline-sync');
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
-let candidateName;
+let candidateName = '';
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
-let candidateAnswer;
+let candidateAnswer = '';
 let questions = [
     "Who was the first American woman in space? ",
     "True or false: 5 kilometer == 5000 meters? ",
@@ -22,7 +22,7 @@ let correctAnswers = [
     "Trajectory",
     "3"
   ];
-let candidateAnswers;
+let candidateAnswers = [];
 
 
 function askForName() {
@@ -32,38 +32,43 @@ function askForName() {
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-
-  //global scope for now since this function doesn't have a return function
-  candidateAnswers = [];
-  for (let q = 0; q < questions.length; q++){
-    candidateAnswers.push(input.question(questions[q]));
+  for (let i = 0; i < questions.length; i++){
+    candidateAnswers.push(input.question(questions[i]));
   }
 } 
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  correct=0;
-  grade=0;
-  questions=5;
-  for (let i = 0; i < 5; i++) {
-    if (candidateAnswers[i] == correctAnswers[i]) {
-        correct =+1
+  let correct=0;
+  for (let i = 0; i < questions.length; i++) {
+    if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()) {
+        correct +=1;
     }
   }
 
-  grade = correct / questions * 100;
-  console.log(`You got ${correct} out of ${questions} correct. That's ${grade}% correct!`)
-
   console.log("Here are your answers and the correct answers:")
-  for (let q = 0; q < questions.length; q++){
-    console.log(`Question ${q+1}`)
+  for (let i = 0; i < questions.length; i++){
+    console.log(
+    `\nQuestion ${i+1} : ${questions[i]} 
+    Correct Answer: ${correctAnswers[i]}
+    Your answer: ${candidateAnswers[i]}`
+    );
+  }
+
+  let grade = correct / questions.length*100;
+  console.log(`You got ${correct} out of ${questions.length} correct. That's ${grade}% correct!`)
+  if (grade >= 80) {
+    console.log(`${grade}% is a passing grade! Congratulations!`)
+  } else {
+    console.log(`${grade}% is not a passing grade! Sorry!`)
   }
 }
+
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  
+  console.log(`Hello, ${candidateName}!`)
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
